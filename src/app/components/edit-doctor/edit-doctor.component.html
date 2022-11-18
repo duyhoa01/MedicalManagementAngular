@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <app-sidebar></app-sidebar>
+    <!--Container Main start-->
+    <div class="height-100">
+        <section class="dashboard">
+            <div class="wrapper">
+                <h2>Apply Doctor</h2>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-box">
+                                <input class="form-control me-2" type="text" placeholder="firstName" name="firstName"
+                                    [(ngModel)]="doctor.user.firstName" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="text" placeholder="sex" name="sex"
+                                    [(ngModel)]="doctor.user.sex" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="number" placeholder="phoneNumber"
+                                    name="phoneNumber" [(ngModel)]="doctor.user.phoneNumber" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="text" placeholder="description"
+                                    name="description" [(ngModel)]="doctor.description" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="file" 
+                                (change)="onFileSelected($event)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-box">
+                                <input class="form-control me-2" type="text" placeholder="lastName" name="lastName"
+                                    [(ngModel)]="doctor.user.lastName" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="number" placeholder="age" name="age"
+                                    [(ngModel)]="doctor.user.age" />
+                            </div>
+                            <div class="input-box">
+                                <input class="form-control me-2" type="number" placeholder="experience"
+                                    name="experience" [(ngModel)]="doctor.experience" />
+                            </div>
+                            <div class="input-box">
+                                <select class="form-select" aria-label="Default select example" name="specialty"
+                                    [(ngModel)]="doctor.specialty">
+                                    <option *ngFor="let specialty of specialties" [ngValue]="specialty.id" [selected]="isSelected(specialty.id,doctor.specialty)"
+                                        ngDefaultControl>{{specialty.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="input-box button">
+                        <input type="Submit" value="Apply Now" (click)="updateDoctotr()">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>

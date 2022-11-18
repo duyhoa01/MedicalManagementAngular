@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <app-sidebar></app-sidebar>
+    <!--Container Main start-->
+    <div class="height-100">
+        <div class="Auth-form-container">
+            <form class="Auth-form">
+                <div class="Auth-form-content">
+                    <h3 class="Auth-form-title">Add Patient</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label>First Name</label>
+                                <input class="form-control me-2" type="text" placeholder="firstName" name="firstName"
+                                    [(ngModel)]="patient.user.firstName" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Email</label>
+                                <input class="form-control me-2" type="email" placeholder="email" name="email"
+                                    [(ngModel)]="patient.user.email" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Phone Number</label>
+                                <input class="form-control me-2" type="text" placeholder="phoneNumber"
+                                    name="phoneNumber" [(ngModel)]="patient.user.phoneNumber" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Sex</label>
+                                <input class="form-control me-2" type="text" placeholder="sex" name="sex"
+                                    [(ngModel)]="patient.user.sex" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mt-3">
+                                <label>Last Name</label>
+                                <input class="form-control me-2" type="text" placeholder="lastName" name="lastName"
+                                    [(ngModel)]="patient.user.lastName" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Password</label>
+                                <input class="form-control me-2" type="password" placeholder="Password" name="Password"
+                                    [(ngModel)]="patient.user.password" />
+                            </div>
+                            <div class="form-group mt-3">
+                                <label>Age</label>
+                                <input class="form-control me-2" type="number" placeholder="age" name="age"
+                                    [(ngModel)]="patient.user.age" />
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label>Job</label>
+                                <input class="form-control me-2" type="text" placeholder="job" name="job"
+                                    [(ngModel)]="patient.job" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Image</label>
+                        <input class="form-control me-2" type="file" placeholder="Password" name="Password"
+                            (change)="onFileSelected($event)" />
+                    </div>
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-outline-success" type="button" (click) = "addPatient()">
+                            Add
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="search-box">
+            <i class="fa fa-search" [routerLink]="['/admin-patients']" [queryParams]="{key: key }"></i>
+            <input type="text" placeholder="Search here..." [(ngModel)]="key" >
+        </div>
+        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+    </header>
+    <app-sidebar></app-sidebar>
+    <!--Container Main start-->
+    <div class="height-100">
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="fas fa-tachometer-alt-fast"></i>
+                    <span class="text">Patient</span>
+                    <button type="button" class="btn btn-primary" routerLink="/add-patient">Add Patient</button>
+                </div>
+
+                <div class="table">
+                    <div class="table_section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Image </th>
+                                    <th>name </th>
+                                    <th>Email </th>
+                                    <th>phone number </th>
+                                    <th>Age </th>
+                                    <th>Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let patient of patients">
+                                    <td>{{ patient.id}}</td>
+                                    <td><img src="{{ patient.user.image}}" /></td>
+                                    <td>{{ patient.user.firstName}} {{ patient.user.lastName}}</td>
+                                    <td>{{ patient.user.email}}</td>
+                                    <td>{{ patient.user.phoneNumber}}</td>
+                                    <td>{{ patient.user.age}}</td>
+                                    <td>
+                                        <button routerLink="/edit-patient/{{patient.id}}"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button (click) = "deletePatient(patient.id)" ><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- <div class="pagination">
+                    <div><i class="fa-solid fa-angles-left"></i></div>
+                    <div><i class="fa-solid fa-chevron-left"></i></div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div><i class="fa-solid fa-chevron-right"></i></div>
+                    <div><i class="fa-solid fa-angles-right"></i></div>
+                </div> -->
+                <div class="paging">
+                    <div>
+                        <button class="btn btn-primary"  [routerLink]="['/admin-patients']" [queryParams]="{page: '0', key: key }" routerLinkActive="active"><i class="fa fa-arrow-circle-left" ></i></button>
+                        <button class="btn btn-primary" *ngFor="let c of [].constructor(count); let i = index" [routerLink]="['/admin-patients']" [queryParams]="{page: i , key: key}" ><span>{{i}}</span></button>
+                        <button class="btn btn-primary"  [routerLink]="['/admin-patients']" [queryParams]="{page: x, key: key }" routerLinkActive="active"><i class="fa fa-arrow-circle-right" ></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

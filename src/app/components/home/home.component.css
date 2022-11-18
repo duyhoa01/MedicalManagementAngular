@@ -1,0 +1,203 @@
+.container {
+    border-top: 1px solid black;
+    padding-top: 5px;
+}
+
+form {
+    width: 100%;
+    min-height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.top{
+    /* position: fixed; */
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 100px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #FFF;
+    transition: var(--tran-05);
+    z-index: 10;
+}
+.top{
+    width: calc(100% - 73px);
+}
+.top .sidebar-toggle{
+    font-size: 26px;
+    color: #000;
+    cursor: pointer;
+}
+
+.top .search-box{
+        position: relative;
+        height: 45px;
+        max-width: 600px;
+        width: 100%;
+        margin: 0 30px;
+    }
+.top .search-box input{
+    position: absolute;
+    border: 1px solid #e6e5e5;
+    background-color: #FFF;
+    padding: 0 25px 0 50px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}
+.top .search-box i{
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #707070;
+}
+.top img{
+        width: 40px;
+        border-radius: 50%;
+}
+
+.pro-container {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    /* width: calc(100% / 3 - 30px); */
+    width: 24%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+}
+
+.card .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card .content .img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 3px;
+    background: #FF676D;
+    margin-bottom: 14px;
+}
+
+.card .content .img img {
+    height: 100%;
+    width: 100%;
+    border: 3px solid #ffff;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card .content .name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card .content .job {
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+}
+
+.card .content .media-icons {
+    margin-top: 10px;
+    display: flex;
+
+}
+
+.media-icons .button{
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+.container .button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.button label {
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
+    background: #fff;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.button label.active {
+    width: 35px;
+}
+
+#one:checked~.button .one {
+    width: 35px;
+}
+
+#one:checked~.button .two {
+    width: 15px;
+}
+
+#two:checked~.button .one {
+    width: 15px;
+}
+
+#two:checked~.button .two {
+    width: 35px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 20px 0 10px 0;
+        width: calc(100% / 2 - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        /* margin: 20px 0 10px 0; */
+        width: 100%;
+    }
+}
