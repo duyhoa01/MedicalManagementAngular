@@ -2,9 +2,11 @@ export class UserToken {
     email: string = '';
     access_token: string = '';
     refresh_token: string = '';
+    firstname:string = '';
+    lastname:string = '';
     role: string = '';
     user_id: string = '';
-    id: string = '';
+    id: number = 0;
     image: string = '';
 }
 

@@ -51,8 +51,9 @@
                         alt="Black and White Portrait of a Man" loading="lazy" />
                 </a>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem routerLink="/admin-dashboard">Dashboard</button>
-                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem routerLink="/admin-dashboard" *ngIf = "checkAdmin()">Dashboard</button>
+                    <button ngbDropdownItem routerLink="/patient-appointments" *ngIf = "checkPatient()">Appointment</button>
+                    <button ngbDropdownItem routerLink="/doctor-appointments" *ngIf = "checkDoctor()" >Appointment</button>
                     <button ngbDropdownItem (click)="accountService.logout()">Log Out</button>
                 </div>
             </div>

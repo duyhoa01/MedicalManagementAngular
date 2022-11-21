@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParamsOptions } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpParamsOptions } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Doctor, DoctorPost } from '../models/doctor';
@@ -54,5 +54,16 @@ export class DoctorService {
 
   deleteDoctor (id: number){
     return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
+  }
+
+  getListAppointment(page :number| null = null, size : number | null = null,id: number){
+    let params = new HttpParams();
+      if(page !== null && size !== null){
+        params = new HttpParams().set('size',size).set('page',page);
+      }
+
+    return this.httpClient.get<any>(`${this.baseUrl}/${id}/appointments`, {
+      params: params,
+    });
   }
 }

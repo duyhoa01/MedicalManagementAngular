@@ -20,6 +20,11 @@ import { EditDoctorComponent } from './components/edit-doctor/edit-doctor.compon
 import { AdminPatientsComponent } from './components/admin-patients/admin-patients.component';
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
+import { DoctorDetailComponent } from './components/doctor-detail/doctor-detail.component';
+import { MakeAppointmentComponent } from './components/make-appointment/make-appointment.component';
+import { AdminAppointmentComponent } from './components/admin-appointment/admin-appointment.component';
+import { DoctorAppointmentComponent } from './components/doctor-appointment/doctor-appointment.component';
+import { PatientAppointmentComponent } from './components/patient-appointment/patient-appointment.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { EditPatientComponent } from './components/edit-patient/edit-patient.com
     EditDoctorComponent,
     AdminPatientsComponent,
     AddPatientComponent,
-    EditPatientComponent
+    EditPatientComponent,
+    DoctorDetailComponent,
+    MakeAppointmentComponent,
+    AdminAppointmentComponent,
+    DoctorAppointmentComponent,
+    PatientAppointmentComponent
   ],
   imports: [
     BrowserModule,

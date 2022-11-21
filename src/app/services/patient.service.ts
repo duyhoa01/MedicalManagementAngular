@@ -75,4 +75,15 @@ export class PatientService {
     return this.httpClient.delete<any>(`${this.baseUrl}/${id}`)
   }
 
+  getListAppointment(page :number| null = null, size : number | null = null,id: number){
+    let params = new HttpParams();
+      if(page !== null && size !== null){
+        params = new HttpParams().set('size',size).set('page',page);
+      }
+
+    return this.httpClient.get<any>(`${this.baseUrl}/${id}/appointments`, {
+      params: params,
+    });
+  }
+
 }

@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="fas fa-tachometer-alt-fast" routerLink=""></i>
+                    <span class="text">Appointment</span>
+                    <button type="button" class="btn btn-primary" routerLink="/add-patient">Add Appointment</button>
+                </div>
+
+                <div class="table">
+                    <div class="table_section">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id </th>
+                                    <th>Patient </th>
+                                    <th>Doctor </th>
+                                    <th>Date </th>
+                                    <th>symptoms</th>
+                                    <th>Status </th>
+                                    <th>Accept </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let appointment of appointments">
+                                    <td>{{ appointment.id}}</td>
+                                    <td>{{ appointment.patient}} </td>
+                                    <td>{{ appointment.doctor}}</td>
+                                    <td>{{ appointment.date}}</td>
+                                    <td>{{ appointment.symptoms}}</td>
+                                    <td>{{ appointment.status}}</td>
+                                    <td>
+                                        <button *ngIf="!appointment.status" (click)="acceptAppointment(appointment.id)" ><i class="fa-solid fa-pen-to-square"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- <div class="paging">
+                    <div>
+                        <button class="btn btn-primary"  [routerLink]="['/admin-patients']" [queryParams]="{page: '0', key: key }" routerLinkActive="active"><i class="fa fa-arrow-circle-left" ></i></button>
+                        <button class="btn btn-primary" *ngFor="let c of [].constructor(count); let i = index" [routerLink]="['/admin-patients']" [queryParams]="{page: i , key: key}" ><span>{{i}}</span></button>
+                        <button class="btn btn-primary"  [routerLink]="['/admin-patients']" [queryParams]="{page: x, key: key }" routerLinkActive="active"><i class="fa fa-arrow-circle-right" ></i></button>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
