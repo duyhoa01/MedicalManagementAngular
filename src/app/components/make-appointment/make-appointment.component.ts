@@ -6,6 +6,7 @@ import { Doctor } from 'src/app/models/doctor';
 import { AccountService } from 'src/app/services/account.service';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { StompService } from 'src/app/services/stomp.service';
 
 @Component({
   selector: 'app-make-appointment',
@@ -24,7 +25,8 @@ export class MakeAppointmentComponent implements OnInit {
               private route: ActivatedRoute,
               public accountService: AccountService,
               private appointmentService: AppointmentService,
-              private router: Router) { }
+              private router: Router,
+              private stompService: StompService) { }
 
   ngOnInit(): void {
     console.log(this.accountService.currentUser$.forEach((user) => {
@@ -45,6 +47,7 @@ export class MakeAppointmentComponent implements OnInit {
     this.appointmentService.makeAppointment(this.appointment)
     .subscribe(response => {
         alert("tạo cuộc hẹn thành công")
+        this.stompService.send("/app/private-appointment", this.appointment.doctor_id+"");
         this.router.navigate([`/doctors`]);
     },
     error => {

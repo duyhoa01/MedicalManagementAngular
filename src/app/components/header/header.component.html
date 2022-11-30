@@ -44,6 +44,13 @@
                 </div>
             </div>
 
+            <div class="d-inline-block" *ngIf="accountService.currentUser$ | async" >
+                <a  id="dropdownBasic1" routerLink="/messages/0">
+                    <i class="fa-solid fa-message"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                </a>
+            </div>
+
             
             <div ngbDropdown class="d-inline-block" *ngIf="accountService.currentUser$ | async">
                 <a  id="dropdownBasic1" ngbDropdownToggle>
@@ -54,7 +61,7 @@
                     <button ngbDropdownItem routerLink="/admin-dashboard" *ngIf = "checkAdmin()">Dashboard</button>
                     <button ngbDropdownItem routerLink="/patient-appointments" *ngIf = "checkPatient()">Appointment</button>
                     <button ngbDropdownItem routerLink="/doctor-appointments" *ngIf = "checkDoctor()" >Appointment</button>
-                    <button ngbDropdownItem (click)="accountService.logout()">Log Out</button>
+                    <button ngbDropdownItem (click)="logout()">Log Out</button>
                 </div>
             </div>
         </div>

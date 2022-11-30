@@ -5,7 +5,7 @@ export class UserToken {
     firstname:string = '';
     lastname:string = '';
     role: string = '';
-    user_id: string = '';
+    user_id: number = 0;
     id: number = 0;
     image: string = '';
 }

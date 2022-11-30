@@ -5,6 +5,7 @@ import { Appointment } from 'src/app/models/appointment';
 import { AccountService } from 'src/app/services/account.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 import { PatientService } from 'src/app/services/patient.service';
+import { StompService } from 'src/app/services/stomp.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class PatientAppointmentComponent implements OnInit {
   
   constructor(private patientService: PatientService,
     private accountService: AccountService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private stompService:StompService) { }
 
   ngOnInit(): void {
     this.accountService.currentUser$.forEach((user) => {
@@ -34,6 +36,9 @@ export class PatientAppointmentComponent implements OnInit {
       }
     })
     this.getListAppointment();
+    this.stompService.subscribe('/user/' + this.currentUser.id + '/patient-appointment', (response: any) => {
+      this.getListAppointment();
+    });
   }
 
   getListAppointment() {

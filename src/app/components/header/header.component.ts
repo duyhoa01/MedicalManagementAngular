@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserToken } from 'src/app/models/app-user';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
 
   currentUser : UserToken = new UserToken();
   
-  constructor(public accountService: AccountService) { }
+  constructor(public accountService: AccountService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.accountService.currentUser$.forEach((user) => {
@@ -19,6 +21,11 @@ export class HeaderComponent implements OnInit {
         this.currentUser = user
       }
     })
+  }
+
+  logout(){
+    this.accountService.logout();
+    this.router.navigate(['doctors']);
   }
 
   checkAdmin(){

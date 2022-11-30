@@ -37,4 +37,8 @@ export class AppointmentService {
   appceptAppointment(id : number){
     return this.httpClient.get<any>(`${this.baseUrl}/${id}/enable`)
   }
+
+  getAppointmetById(id:number){
+    return this.httpClient.get<any>(`${this.baseUrl}/${id}`)
+  }
 }

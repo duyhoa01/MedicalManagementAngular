@@ -5,6 +5,7 @@ import { Appointment } from 'src/app/models/appointment';
 import { AccountService } from 'src/app/services/account.service';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { DoctorService } from 'src/app/services/doctor.service';
+import { StompService } from 'src/app/services/stomp.service';
 
 @Component({
   selector: 'app-doctor-appointment',
@@ -25,7 +26,8 @@ export class DoctorAppointmentComponent implements OnInit {
   constructor(private doctorService: DoctorService,
     private accountService: AccountService,
     private route: ActivatedRoute,
-    private appointmentService: AppointmentService,) { }
+    private appointmentService: AppointmentService,
+    private stompService: StompService,) { }
 
   ngOnInit(): void {
     this.accountService.currentUser$.forEach((user) => {
@@ -34,6 +36,9 @@ export class DoctorAppointmentComponent implements OnInit {
       }
     })
     this.getListAppointment();
+    this.stompService.subscribe('/user/' + this.currentUser.id + '/appointment', (response: any) => {
+      this.getListAppointment()
+    });
   }
 
   getListAppointment() {
@@ -57,8 +62,11 @@ export class DoctorAppointmentComponent implements OnInit {
     if(confirm("bạn có muốn xác nhận cuộc hẹn này không")) {
       this.appointmentService.appceptAppointment(id)
       .subscribe(response => {
-          alert("xác nhận thành công")
+          alert("xác nhận thành công");
           this.getListAppointment();
+          this.appointmentService.getAppointmetById(id).subscribe(response=>{
+            this.stompService.send("/app/private-accept-appointment", response.patient_id+"");
+          })
       },
       error => {
         alert(error.error.message)

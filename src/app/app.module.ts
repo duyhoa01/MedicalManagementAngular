@@ -25,6 +25,10 @@ import { MakeAppointmentComponent } from './components/make-appointment/make-app
 import { AdminAppointmentComponent } from './components/admin-appointment/admin-appointment.component';
 import { DoctorAppointmentComponent } from './components/doctor-appointment/doctor-appointment.component';
 import { PatientAppointmentComponent } from './components/patient-appointment/patient-appointment.component';
+import { UserChatComponent } from './components/user-chat/user-chat.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { PatientAppointmentComponent } from './components/patient-appointment/pa
     MakeAppointmentComponent,
     AdminAppointmentComponent,
     DoctorAppointmentComponent,
-    PatientAppointmentComponent
+    PatientAppointmentComponent,
+    UserChatComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,9 @@ import { PatientAppointmentComponent } from './components/patient-appointment/pa
     FormsModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })
